@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rosa.ribeiro.jonas.cardapio.model.FoodModel;
 import rosa.ribeiro.jonas.cardapio.repository.FoodRepository;
+import rosa.ribeiro.jonas.cardapio.repository.FoodResponseDTO;
 
 import java.util.List;
 
@@ -17,8 +18,8 @@ public class FoodController {
     private FoodRepository repository;
 
     @GetMapping
-    public List<FoodModel> getAll(){
-        return repository.findAll();
+    public List<FoodResponseDTO> getAll(){
+        return repository.findAll().stream().map(FoodResponseDTO::new).toList();
 
     }
 }
