@@ -1,7 +1,8 @@
-package rosa.ribeiro.jonas.cardapio.model;
+package rosa.ribeiro.jonas.cardapio.food.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import rosa.ribeiro.jonas.cardapio.food.repository.FoodRequestDTO;
 
 @Table(name = "foods")
 @Entity(name = "foods")
@@ -17,4 +18,11 @@ public class FoodModel {
     private String title;
     private String image;
     private Integer price;
+
+
+    public FoodModel(FoodRequestDTO data) {
+        this.title = data.title();
+        this.image = data.image();
+        this.price = data.price();
+    }
 }
